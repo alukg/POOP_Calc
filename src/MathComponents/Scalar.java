@@ -5,4 +5,5 @@ public interface Scalar {
     public Scalar mul(Scalar s);
     public Scalar neg();
     public Scalar inv();
+    public double abs();
 }

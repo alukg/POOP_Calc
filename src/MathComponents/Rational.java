@@ -4,6 +4,7 @@ public class Rational implements Scalar {
 
     private int numerator;
     private int demonator;
+    static final Rational zeroRational = new Rational(0,1);
 
     public Rational(int numberator, int demonator)
     {
@@ -27,6 +28,11 @@ public class Rational implements Scalar {
     public Rational(Rational r)
     {
         this(r.getNumerator(), r.getDemonator());
+    }
+
+    public boolean equal(Rational s) {
+        if (s.getNumerator()!=this.numerator || s.getDemonator()!=this.demonator) return false;
+        return true;
     }
 
     public int getNumerator()
@@ -59,7 +65,7 @@ public class Rational implements Scalar {
         int gcd = gcd(newNumerator, newDenomator);
         return new Rational((newNumerator / gcd), (newDenomator / gcd));
     }
-    //îçæéø îçì÷ îùåúó î÷ñéîìé
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private int gcd(int a, int b)
     {
         if (b==0) return a;
@@ -86,6 +92,7 @@ public class Rational implements Scalar {
     public Scalar inv() {
         return new Rational(this.demonator, this.numerator);
     }
+
     public String toString()
     {
         return this.numerator +"/"+ this.demonator;
@@ -94,13 +101,12 @@ public class Rational implements Scalar {
     {
     	return this.numerator == 0;
     }
-    public Scalar Abs()
+    public double abs()
     {
     	int newNumerator = this.numerator;
     	if(this.numerator < 0)
     		newNumerator = newNumerator * -1;
-    	return new Rational(newNumerator, this.demonator);
-    		
+    	return newNumerator/this.demonator;
     }
 
 }

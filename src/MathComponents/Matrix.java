@@ -5,11 +5,12 @@ public class Matrix
 	private MathVector[] arrVector ;
 	private int rows;
 	private int columns;
-	
+
 	public Matrix(Matrix mat) throws Exception
 	{
 		this.rows= mat.getRows();
 		this.columns = mat.getColumns();
+		this.arrVector = new MathVector[rows];
 		for(int i = 0; i < this.rows; i++)
 		{
 			if(!(((mat.getArrVector()[0].getVectorParm()[0] instanceof Complex)&&(mat.getArrVector()[i].getVectorParm()[0] instanceof Complex))
@@ -30,11 +31,11 @@ public class Matrix
 			}
 		}
 	}
-	public Matrix(MathVector[] arrVector,int rows,int columns)
+	public Matrix(MathVector[] arrVector)
 	{
 		this.arrVector = arrVector;
-		this.rows = rows;
-		this.columns = columns;
+		this.rows = arrVector.length;
+		this.columns = arrVector[0].getSize();
 	}
 	public Matrix(int rows, int columns)
 	{
@@ -104,59 +105,55 @@ public class Matrix
 			this.arrVector[j] = new MathVector(tmp);
 		}
 	}
-	/*public Matrix solve() throws Exception
+
+	public Matrix solve() throws Exception
 	{
 		Matrix ans = new Matrix(this);
 		int i = 0;
 		int j = 0;
-				while (i < this.rows and j < this.columns)
-				{
-				  //Find pivot in column j, starting in row i:
-				  int maxi = i;
-				  for (int k = i+1;i  m do
-				    if abs(A[k,j]) > abs(A[maxi,j]) then
-				      maxi := k
-				    end if
-				  end for
-				  if A[maxi,j]  0 then
-				    swap rows i and maxi, but do not change the value of i
-				    Now A[i,j] will contain the old value of A[maxi,j].
-				    divide each entry in row i by A[i,j]
-				    Now A[i,j] will have the value 1.
-				    for u := i+1 to m do
-				      subtract A[u,j] * row i from row u
-				      Now A[u,j] will be 0, 
-				       since A[u,j] - A[i,j] * A[u,j] = A[u,j] - 1 * A[u,j] = 0.
-				    end for
-				    i := i + 1
-				  end if
-				  j := j + 1
-				end while
+		while (i < ans.getRows() && j < ans.getColumns()-1){
+			int max = i;
+			for (int k=i; k < rows; k++) {
+				if (arrVector[k].getVectorParm()[j].abs() > arrVector[max].getVectorParm()[j].abs()) {
+					max = k;
+				}
+			}
+			Scalar check = ans.getArrVector()[max].getVectorParm()[j];
+			if ((check instanceof Rational && !((Rational) check).equal(Rational.zeroRational)) || (check instanceof Complex && !((Complex) check).equal(Complex.zeroComplex))){
+				ans.rowSweitching(i,max);
+				ans.getArrVector()[i] = ans.getArrVector()[i].mulByScalar(ans.getArrVector()[i].getVectorParm()[j].inv());
+				for (int u=i+1 ; u < ans.getRows() ; u++){
+					MathVector tmp = ans.getArrVector()[i].mulByScalar(ans.getArrVector()[u].getVectorParm()[j].neg());
+					ans.getArrVector()[u] = ans.getArrVector()[u].add(tmp);
+				}
+				i=i+1;
+			}
+			j=j+1;
+		}
+
+		for (int x=1;x<ans.getRows();x++){
+			boolean found = false;
+			int y = 0;
+			while( y < ans.getArrVector()[x].getSize() && !found){
+				if((ans.getArrVector()[x].getVectorParm()[y] instanceof Rational && ((Rational) ans.getArrVector()[x].getVectorParm()[y]).equal(Rational.zeroRational)) || (ans.getArrVector()[x].getVectorParm()[y] instanceof Complex && ((Complex) ans.getArrVector()[x].getVectorParm()[y]).equal(Complex.zeroComplex))){
+					found=false;
+				}
+				else{
+					found=true;
+				}
+				y++;
+			}
+			y=y-1;
+			for (int z=0;z<x;z++) {
+				MathVector tmp = new MathVector(ans.getArrVector()[x]);
+				tmp = tmp.mulByScalar(ans.getArrVector()[z].getVectorParm()[y].neg());
+				ans.getArrVector()[z] = ans.getArrVector()[z].add(tmp);
+			}
+		}
+
 		return ans;
-	}*/
-	/*private bool CheckMatrixAreTheSameType(Matrix mat)
-	{
-		
 	}
-	private Scalar[] CreateRationalArrScalar(int columns)
-	{
-		Scalar[] arr = new Scalar[columns];
-		for(int i = 0; i < arr.length; i++)
-		{
-			arr[i] = new Rational(0,1);
-		}
-		return arr;
-	}
-	private Scalar[] CreateComplexArrScalar(int columns)
-	{
-		Scalar[] arr = new Scalar[columns];
-		Rational tmp = new Rational(0,1);
-		for(int i = 0; i < arr.length; i++)
-		{
-			arr[i] = new Complex(tmp,tmp);
-		}
-		return arr;
-	}*/
+
 	public int getRows()
 	{
 		return this.rows;

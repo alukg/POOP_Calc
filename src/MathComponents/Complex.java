@@ -3,6 +3,7 @@ package MathComponents;
 public class Complex implements Scalar {
     private Rational real;
     private Rational imaginary;
+    static final Complex zeroComplex = new Complex(new Rational(0,1),new Rational(0,1));
 
     public Complex(Rational real, Rational imaginary)
     {
@@ -18,6 +19,12 @@ public class Complex implements Scalar {
     	this.real = new Rational();
     	this.imaginary = new Rational();
     }
+
+    public boolean equal(Complex s) {
+        if (!s.getReal().equal(this.real) || !s.getImaginary().equal(this.imaginary)) return false;
+        return true;
+    }
+
     public Rational getReal()
     {
         return this.real;
@@ -76,9 +83,10 @@ public class Complex implements Scalar {
     {
     	return (this.real.IsZero() && this.imaginary.IsZero());
     }
-    /*public Scalar Abs()
+    public double abs()
     {
     	this.real.mul(this.real);
     	this.imaginary.mul(this.imaginary);
-    }*/
+        return 0;
+    }
 }
