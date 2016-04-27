@@ -1,5 +1,5 @@
 package UserInterface;
 
 public interface UI {
-    void play();
+    void play() throws Exception;
 }
