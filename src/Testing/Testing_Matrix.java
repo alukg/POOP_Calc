@@ -1,6 +1,5 @@
 package Testing;
 
-
 import MathComponents.*;
 
 
@@ -20,21 +19,21 @@ public class Testing_Matrix {
 		
 		*/
 
-		Scalar[] vec1 = new Rational[4];
+		Scalar[] vec1 = new Rational[3];
 		vec1[0]=new Rational(1,1);
 		vec1[1]=new Rational(1,1);
 		vec1[2]=new Rational(1,1);
-		vec1[3]=new Rational(2,1);
-		Scalar[] vec2 = new Rational[4];
+		//vec1[3]=new Rational(2,1);
+		Scalar[] vec2 = new Rational[3];
 		vec2[0]=new Rational(1,1);
 		vec2[1]=new Rational(-1,1);
 		vec2[2]=new Rational(-1,1);
-		vec2[3]=new Rational(4,1);
-		Scalar[] vec3 = new Rational[4];
+		//vec2[3]=new Rational(4,1);
+		Scalar[] vec3 = new Rational[3];
 		vec3[0]=new Rational(2,1);
 		vec3[1]=new Rational(1,1);
 		vec3[2]=new Rational(3,1);
-		vec3[3]=new Rational(6,1);
+		//vec3[3]=new Rational(6,1);
 		MathVector mat1 = new MathVector(vec1);
 		MathVector mat2 = new MathVector(vec2);
 		MathVector mat3 = new MathVector(vec3);
