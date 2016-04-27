@@ -20,7 +20,15 @@ public class MathVector {
             }
         }
     }
-
+    public MathVector(int size)
+    {
+    	this.size = size;
+    	//this.vectorParm = null;
+    	for(int i = 0; i < this.size; i++)
+    	{
+    		this.vectorParm[i] = null;
+    	}
+    }
     public MathVector(MathVector vec){
         this.size = vec.getSize();
         this.vectorParm = new Scalar[vec.getSize()];
@@ -33,6 +41,15 @@ public class MathVector {
             }
         }
     }
+  /*  public MathVector(int size)
+    {
+    	this.size = size;
+    	this.vectorParm = new Scalar[this.size];
+    	for(int i = 0; i < this.size; i++)
+    	{
+    		this.vectorParm[i] = new Rational
+    	}
+    }*/
 
     public int getSize(){
         return size;
@@ -47,8 +64,13 @@ public class MathVector {
             throw new Exception("The added vector is not suitable");
         }
         else{
-            MathVector newMathVector = new MathVector(this);
-            newMathVector.add(addedVector);
+            Scalar[] newVactorParm = this.vectorParm;
+            Scalar[] toAdd = addedVector.getVectorParm();
+            for(int i = 0; i < this.size; i++)
+            {
+            	newVactorParm[i] = newVactorParm[i].add(toAdd[i]);
+            }
+            MathVector newMathVector = new MathVector(newVactorParm);
             return newMathVector;
         }
     }
@@ -68,5 +90,13 @@ public class MathVector {
         }
         return ans;
     }
-
+    public String toString()
+    {
+    	String ans = "";
+    	for(int i = 0; i < this.size; i++)
+    	{
+    		ans = ans + " "+ this.vectorParm[i].toString();
+    	}
+    	return ans;
+    }
 }

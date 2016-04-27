@@ -13,6 +13,11 @@ public class Complex implements Scalar {
     {
         this(complex.getReal(), complex.getImaginary());
     }
+    public Complex()
+    {
+    	this.real = new Rational();
+    	this.imaginary = new Rational();
+    }
     public Rational getReal()
     {
         return this.real;
@@ -67,5 +72,13 @@ public class Complex implements Scalar {
     {
         return this.real.toString()+"+"+this.imaginary.toString()+"i";
     }
-
+    public Boolean IsZero()
+    {
+    	return (this.real.IsZero() && this.imaginary.IsZero());
+    }
+    /*public Scalar Abs()
+    {
+    	this.real.mul(this.real);
+    	this.imaginary.mul(this.imaginary);
+    }*/
 }

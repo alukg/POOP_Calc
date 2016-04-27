@@ -9,19 +9,24 @@ public class Rational implements Scalar {
     {
         if(demonator == 0)
         {
-            //להחזיר הודעת שגיאה על חלוקה ב0
+            //
         }
-        if(demonator < 0)//לוודא שמינוס יהיה רק במונה ,ביטול של מינוס במכנה ומונה יחדיו.
+        if(demonator < 0)//
         {
             demonator = demonator * (-1);
             numberator = numberator * (-1);
         }
-        this.demonator = demonator;
         this.numerator = numberator;
+        this.demonator = demonator;
+    }
+    public Rational()
+    {
+    	this.demonator = 1;
+    	this.numerator = 0;
     }
     public Rational(Rational r)
     {
-        this(r.getDemonator(),r.getNumerator());
+        this(r.getNumerator(), r.getDemonator());
     }
 
     public int getNumerator()
@@ -31,6 +36,18 @@ public class Rational implements Scalar {
     public int getDemonator()
     {
         return this.demonator;
+    }
+    public void setDemonator(int demonator)
+    {
+    	if(demonator == 0)
+    	{
+    		//Error message
+    	}
+    	this.demonator = demonator;
+    }
+    public void setNumberator(int numerator)
+    {
+    	this.numerator = numerator;
     }
     @Override
     public Scalar add(Scalar s)
@@ -42,7 +59,7 @@ public class Rational implements Scalar {
         int gcd = gcd(newNumerator, newDenomator);
         return new Rational((newNumerator / gcd), (newDenomator / gcd));
     }
-    //פונקציה שמחזירה את המחלק המקסימלי המשותף
+    //����� ���� ����� �������
     private int gcd(int a, int b)
     {
         if (b==0) return a;
@@ -72,6 +89,18 @@ public class Rational implements Scalar {
     public String toString()
     {
         return this.numerator +"/"+ this.demonator;
+    }
+    public Boolean IsZero()
+    {
+    	return this.numerator == 0;
+    }
+    public Scalar Abs()
+    {
+    	int newNumerator = this.numerator;
+    	if(this.numerator < 0)
+    		newNumerator = newNumerator * -1;
+    	return new Rational(newNumerator, this.demonator);
+    		
     }
 
 }
