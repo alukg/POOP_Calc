@@ -23,7 +23,7 @@ public class MathVector {
     public MathVector(int size)
     {
     	this.size = size;
-    	//this.vectorParm = null;
+    	this.vectorParm = new Scalar[this.size];
     	for(int i = 0; i < this.size; i++)
     	{
     		this.vectorParm[i] = null;
@@ -86,7 +86,7 @@ public class MathVector {
     public Scalar mul(MathVector mulVector){
         Scalar ans = vectorParm[0].mul(mulVector.getVectorParm()[0]);
         for(int i=1;i<this.size;i++){
-            ans.add(vectorParm[i].mul(mulVector.getVectorParm()[i]));
+            ans = ans.add(vectorParm[i].mul(mulVector.getVectorParm()[i]));
         }
         return ans;
     }

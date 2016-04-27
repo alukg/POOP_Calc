@@ -40,6 +40,7 @@ public class Matrix
 	{
 		this.rows = rows;
 		this.columns = columns;
+		this.arrVector = new MathVector[this.rows];
 		for(int i = 0; i < rows; i++)
 		{
 			this.arrVector[i] = new MathVector(this.columns);
@@ -108,13 +109,12 @@ public class Matrix
 		Matrix ans = new Matrix(this);
 		int i = 0;
 		int j = 0;
-				while (i < this.rows && j < this.columns)
+				while (i < this.rows and j < this.columns)
 				{
 				  //Find pivot in column j, starting in row i:
 				  int maxi = i;
-				  for (int k = i+1; k < this.rows ; k++)
-				  {
-				    if  ans.getArrVector()[i].getVectorParm()[j]
+				  for (int k = i+1;i  m do
+				    if abs(A[k,j]) > abs(A[maxi,j]) then
 				      maxi := k
 				    end if
 				  end for
