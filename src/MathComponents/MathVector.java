@@ -29,7 +29,7 @@ public class MathVector {
     		this.vectorParm[i] = null;
     	}
     }
-    public MathVector(MathVector vec){
+    public MathVector(MathVector vec) throws Exception{
         this.size = vec.getSize();
         this.vectorParm = new Scalar[vec.getSize()];
         for (int i=0;i<vec.getSize();i++){
@@ -41,15 +41,6 @@ public class MathVector {
             }
         }
     }
-  /*  public MathVector(int size)
-    {
-    	this.size = size;
-    	this.vectorParm = new Scalar[this.size];
-    	for(int i = 0; i < this.size; i++)
-    	{
-    		this.vectorParm[i] = new Rational
-    	}
-    }*/
 
     public int getSize(){
         return size;
@@ -83,7 +74,7 @@ public class MathVector {
         return (new MathVector(parm));
     }
 
-    public Scalar mul(MathVector mulVector){
+    public Scalar mul(MathVector mulVector) throws Exception{
         Scalar ans = vectorParm[0].mul(mulVector.getVectorParm()[0]);
         for(int i=1;i<this.size;i++){
             ans = ans.add(vectorParm[i].mul(mulVector.getVectorParm()[i]));

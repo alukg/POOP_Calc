@@ -4,13 +4,13 @@ public class Rational implements Scalar {
 
     private int numerator;
     private int demonator;
-    static final Rational zeroRational = new Rational(0,1);
-
-    public Rational(int numberator, int demonator)
+    static final Rational zeroRational = new Rational();
+    
+    public Rational(int numberator, int demonator) throws Exception
     {
         if(demonator == 0)
         {
-            //
+            throw new Exception("Demonator 0 is illegal.");
         }
         if(demonator < 0)//
         {
@@ -25,7 +25,7 @@ public class Rational implements Scalar {
     	this.demonator = 1;
     	this.numerator = 0;
     }
-    public Rational(Rational r)
+    public Rational(Rational r) throws Exception
     {
         this(r.getNumerator(), r.getDemonator());
     }
@@ -43,20 +43,23 @@ public class Rational implements Scalar {
     {
         return this.demonator;
     }
-    public void setDemonator(int demonator)
+    public void setDemonator(int demonator) throws Exception
     {
     	if(demonator == 0)
     	{
-    		//Error message
+            throw new Exception("Demonator 0 is illegal.");
     	}
-    	this.demonator = demonator;
+    	else
+    	{
+    		this.demonator = demonator;
+    	}
     }
     public void setNumberator(int numerator)
     {
     	this.numerator = numerator;
     }
     @Override
-    public Scalar add(Scalar s)
+    public Scalar add(Scalar s) throws Exception
     {
         int sDemonator = ((Rational)(s)).getDemonator();
         int sNumberator = ((Rational)(s)).getNumerator();
@@ -65,7 +68,6 @@ public class Rational implements Scalar {
         int gcd = gcd(newNumerator, newDenomator);
         return new Rational((newNumerator / gcd), (newDenomator / gcd));
     }
-    //����� ���� ����� �������
     private int gcd(int a, int b)
     {
         if (b==0) return a;
@@ -73,7 +75,7 @@ public class Rational implements Scalar {
     }
 
     @Override
-    public Scalar mul(Scalar s)
+    public Scalar mul(Scalar s)throws Exception
     {
         int newNumerator = this.numerator *((Rational)(s)).getNumerator();
         int newDenomator = this.demonator * ((Rational)(s)).getDemonator();
@@ -81,15 +83,14 @@ public class Rational implements Scalar {
         return new Rational((newNumerator / gcd), (newDenomator / gcd));
     }
 
-    @Override
-    public Scalar neg()
+    public Scalar neg() throws Exception
     {
         int newNumerator = this.numerator * (-1);
         return new Rational(newNumerator, this.demonator);
     }
 
     @Override
-    public Scalar inv() {
+    public Scalar inv() throws Exception{
         return new Rational(this.demonator, this.numerator);
     }
 

@@ -7,6 +7,8 @@ public class Testing_Matrix {
 
 	public static void main(String[] args) throws Exception
 	{
+		try
+		{
 		/*Rational r = new Rational(1,2);
 		Rational r2 = new Rational(3,4);
 		Scalar[] s = new Scalar[2];
@@ -41,15 +43,20 @@ public class Testing_Matrix {
 		arr[0]=mat1;
 		arr[1]=mat2;
 		arr[2]=mat3;
-		//System.out.println(arr[0].mul(arr[1]));
+		System.out.println(arr[0].mul(arr[1]));
 		Matrix m = new Matrix(arr);
 		System.out.println(m.toString());
-		//System.out.println(m.transpose());
-		//System.out.println(m.add(m).toString());
-		//System.out.println(m.mul(m).toString());
-		//m.rowSweitching(0, 1);
-		//System.out.println(m.toString());
+		System.out.println(m.transpose());
+		System.out.println(m.add(m).toString());
+		System.out.println(m.mul(m).toString());
+		m.rowSweitching(0, 1);
+		System.out.println(m.toString());
 		System.out.println(m.solve().toString());
 		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+	}
 	}
 

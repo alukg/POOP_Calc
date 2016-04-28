@@ -3,14 +3,14 @@ package MathComponents;
 public class Complex implements Scalar {
     private Rational real;
     private Rational imaginary;
-    static final Complex zeroComplex = new Complex(new Rational(0,1),new Rational(0,1));
+    static final Complex zeroComplex = new Complex();
 
-    public Complex(Rational real, Rational imaginary)
+    public Complex(Rational real, Rational imaginary) throws Exception
     {
         this.real = new Rational(real);
         this.imaginary = new Rational(imaginary);
     }
-    public Complex(Complex complex)
+    public Complex(Complex complex) throws Exception
     {
         this(complex.getReal(), complex.getImaginary());
     }
@@ -34,7 +34,7 @@ public class Complex implements Scalar {
         return this.imaginary;
     }
     @Override
-    public Scalar add(Scalar s)
+    public Scalar add(Scalar s)throws Exception
     {
         Rational newReal = (Rational)(this.real.add(((Complex)(s)).getReal()));
         Rational newImaginary = (Rational)(this.imaginary.add(((Complex)(s)).getImaginary()));
@@ -42,7 +42,7 @@ public class Complex implements Scalar {
     }
 
     @Override
-    public Scalar mul(Scalar s)
+    public Scalar mul(Scalar s)throws Exception
     {
         Rational newReal = (Rational)(this.real.mul(((Complex)(s)).getReal()));
         Rational newReal2 = (Rational)(this.imaginary.mul(((Complex)(s)).getImaginary()));
@@ -56,7 +56,7 @@ public class Complex implements Scalar {
     }
 
     @Override
-    public Scalar neg()
+    public Scalar neg()throws Exception
     {
         Rational newReal = (Rational)(this.real.neg());
         Rational newImaginary = (Rational)(this.imaginary.neg());
@@ -64,7 +64,7 @@ public class Complex implements Scalar {
     }
 
     @Override
-    public Scalar inv()
+    public Scalar inv( )throws Exception
     {
         //Rational newReal = (Rational)(this.real.inv());
         Rational newImaginary = (Rational)(this.imaginary.neg());
@@ -85,10 +85,18 @@ public class Complex implements Scalar {
     }
     public double abs()
     {
+    	try
+    	{
     	Scalar RealSquared = this.real.mul(this.real);
         Scalar ImgSquared = this.imaginary.mul(this.imaginary);
         Rational RealPlusImg = (Rational)RealSquared.add(ImgSquared);
         double ans = (double)RealPlusImg.getNumerator()/RealPlusImg.getDemonator();
         return Math.sqrt(ans);
+    	}
+    	catch(Exception e)
+    	{
+    		System.out.println(e.getMessage());
+    	}
+    	return 0.0;
     }
 }
