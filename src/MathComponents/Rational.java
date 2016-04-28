@@ -17,8 +17,9 @@ public class Rational implements Scalar {
             demonator = demonator * (-1);
             numberator = numberator * (-1);
         }
-        this.numerator = numberator;
-        this.demonator = demonator;
+        int gcd = gcd(Math.abs(numberator),Math.abs(demonator));
+        this.numerator = numberator / gcd;
+        this.demonator = demonator / gcd;
     }
     public Rational()
     {

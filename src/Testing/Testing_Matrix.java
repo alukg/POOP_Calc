@@ -1,57 +1,30 @@
 package Testing;
 
 import MathComponents.*;
-
+import org.junit.*;
 
 public class Testing_Matrix {
 
+	private Rational r;
 	public static void main(String[] args) throws Exception
 	{
 		try
 		{
-		/*Rational r = new Rational(1,2);
-		Rational r2 = new Rational(3,4);
-		Scalar[] s = new Scalar[2];
-		s[0] = r;
-		s[1] = r2;
-		MathVector m = new MathVector(s);
-		System.out.println(r.mul(r2));
-		System.out.println(m.mulByScalar(r));
-		System.out.println(m.mul(m));
+		Rational r = new Rational();
+		System.out.println(r.add(r));
+		//Rational r2 = new Rational(0,0);
+		Rational r3 = new Rational(10,2);
+		Rational r4 = new Rational(0,7);
+		Rational r5 = new Rational(3,9);
+		Rational r6 = (Rational)r5.neg();
+		Rational r7 = (Rational)r3.inv();
+		System.out.println("Rational r is "+r.toString()); // Solution should be 0/1
+		System.out.println("Rational r3 is "+r3.toString()); // Solution should be 5/1
+		System.out.println("Rational r4 is "+r4.toString()); //Solution Should be 0/1
+		System.out.println("Rational r5 is "+r5.toString()); // Solution should be 1/3
+		System.out.println("Rational r*r3 is "+(r.mul(r3)).toString()); // Solution should be 0/1
+		System.out.println("Rational r3*r5 is "+(r3.mul(r5)).toString()); // Solution should be 5/3
 		
-		*/
-
-		Scalar[] vec1 = new Rational[3];
-		vec1[0]=new Rational(1,1);
-		vec1[1]=new Rational(1,1);
-		vec1[2]=new Rational(1,1);
-		//vec1[3]=new Rational(2,1);
-		Scalar[] vec2 = new Rational[3];
-		vec2[0]=new Rational(1,1);
-		vec2[1]=new Rational(-1,1);
-		vec2[2]=new Rational(-1,1);
-		//vec2[3]=new Rational(4,1);
-		Scalar[] vec3 = new Rational[3];
-		vec3[0]=new Rational(2,1);
-		vec3[1]=new Rational(1,1);
-		vec3[2]=new Rational(3,1);
-		//vec3[3]=new Rational(6,1);
-		MathVector mat1 = new MathVector(vec1);
-		MathVector mat2 = new MathVector(vec2);
-		MathVector mat3 = new MathVector(vec3);
-		MathVector[] arr = new MathVector[3];
-		arr[0]=mat1;
-		arr[1]=mat2;
-		arr[2]=mat3;
-		System.out.println(arr[0].mul(arr[1]));
-		Matrix m = new Matrix(arr);
-		System.out.println(m.toString());
-		System.out.println(m.transpose());
-		System.out.println(m.add(m).toString());
-		System.out.println(m.mul(m).toString());
-		m.rowSweitching(0, 1);
-		System.out.println(m.toString());
-		System.out.println(m.solve().toString());
 		}
 		catch(Exception e)
 		{
