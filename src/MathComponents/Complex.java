@@ -85,8 +85,10 @@ public class Complex implements Scalar {
     }
     public double abs()
     {
-    	this.real.mul(this.real);
-    	this.imaginary.mul(this.imaginary);
-        return 0;
+    	Scalar RealSquared = this.real.mul(this.real);
+        Scalar ImgSquared = this.imaginary.mul(this.imaginary);
+        Rational RealPlusImg = (Rational)RealSquared.add(ImgSquared);
+        double ans = (double)RealPlusImg.getNumerator()/RealPlusImg.getDemonator();
+        return Math.sqrt(ans);
     }
 }

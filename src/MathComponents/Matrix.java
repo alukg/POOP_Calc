@@ -146,6 +146,7 @@ public class Matrix
 			if (y == ans.getArrVector()[x].getSize()){
 				throw new Exception("There is no unique solution for this matrix");
 			}
+			y=y-1;
 			for (int z=0;z<x;z++) {
 				MathVector tmp = new MathVector(ans.getArrVector()[x]);
 				tmp = tmp.mulByScalar(ans.getArrVector()[z].getVectorParm()[y].neg());
