@@ -95,7 +95,12 @@ public class MathVector {
     	String ans = "";
     	for(int i = 0; i < this.size; i++)
     	{
-    		ans = ans + " "+ this.vectorParm[i].toString();
+            if(i==this.size-1){
+                ans = ans + this.vectorParm[i].toString();
+            }
+            else{
+                ans = ans + this.vectorParm[i].toString() + "    ";
+            }
     	}
     	return ans;
     }
