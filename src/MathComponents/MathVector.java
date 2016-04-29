@@ -90,7 +90,7 @@ public class MathVector {
                 ans = ans + this.vectorParm[i].toString();
             }
             else{
-                ans = ans + this.vectorParm[i].toString() + "    ";
+                ans = ans + this.vectorParm[i].toString() + "  ";
             }
     	}
     	return ans;
