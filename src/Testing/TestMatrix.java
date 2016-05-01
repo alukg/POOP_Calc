@@ -127,16 +127,16 @@ public class TestMatrix
 	@Test
 	public void testToString()
 	{
-		Assert.assertEquals("Should be 0/1  1/1  2/1  3/1  4/1\n3/1  3/1  3/1  3/1  3/1\n", "0/1  1/1  2/1  3/1  4/1\n3/1  3/1  3/1  3/1  3/1\n" , m1.toString());
-		Assert.assertEquals("Should be 0/1  1/1  2/1  3/1  4/1\n3/1  3/1  3/1  3/1  3/1\n", "0/1  1/1  2/1  3/1  4/1\n3/1  3/1  3/1  3/1  3/1\n", m3.toString());
-		Assert.assertEquals("Should be -1/1+0/1i  -1/1+1/1i  -1/1+2/1i  -1/1+3/1i\n2/1+0/1i  2/1+1/1i  2/1+2/1i  2/1+3/1i\n", "-1/1+0/1i  -1/1+1/1i  -1/1+2/1i  -1/1+3/1i\n2/1+0/1i  2/1+1/1i  2/1+2/1i  2/1+3/1i\n" , m4.toString());
+		Assert.assertEquals("Should be 0/1    1/1    2/1    3/1    4/1\n3/1    3/1    3/1    3/1    3/1\n", "0/1    1/1    2/1    3/1    4/1\n3/1    3/1    3/1    3/1    3/1\n" , m1.toString());
+		Assert.assertEquals("Should be 0/1    1/1    2/1    3/1    4/1\n3/1    3/1    3/1    3/1    3/1\n", "0/1    1/1    2/1    3/1    4/1\n3/1    3/1    3/1    3/1    3/1\n", m3.toString());
+		Assert.assertEquals("Should be -1/1+0/1i    -1/1+1/1i    -1/1+2/1i    -1/1+3/1i\n2/1+0/1i    2/1+1/1i    2/1+2/1i    2/1+3/1i\n", "-1/1+0/1i    -1/1+1/1i    -1/1+2/1i    -1/1+3/1i\n2/1+0/1i    2/1+1/1i    2/1+2/1i    2/1+3/1i\n" , m4.toString());
 	}@Test
 	public void testAdd()
 	{
 		try
 		{
-		Assert.assertEquals("Should be 0/1  2/1  4/1  6/1  8/1\n6/1  6/1  6/1  6/1  6/1\n", "0/1  2/1  4/1  6/1  8/1\n6/1  6/1  6/1  6/1  6/1\n" , (m1.add(m1).toString()));
-		Assert.assertEquals("Should be -2/1+0/1i  -2/1+2/1i  -2/1+4/1i  -2/1+6/1i\n4/1+0/1i  4/1+2/1i  4/1+4/1i  4/1+6/1i\n", "-2/1+0/1i  -2/1+2/1i  -2/1+4/1i  -2/1+6/1i\n4/1+0/1i  4/1+2/1i  4/1+4/1i  4/1+6/1i\n" , (m4.add(m4).toString()));
+		Assert.assertEquals("Should be 0/1    2/1    4/1    6/1    8/1\n6/1    6/1    6/1    6/1    6/1\n", "0/1    2/1    4/1    6/1    8/1\n6/1    6/1    6/1    6/1    6/1\n" , (m1.add(m1).toString()));
+		Assert.assertEquals("Should be -2/1+0/1i    -2/1+2/1i    -2/1+4/1i    -2/1+6/1i\n4/1+0/1i    4/1+2/1i    4/1+4/1i    4/1+6/1i\n", "-2/1+0/1i    -2/1+2/1i    -2/1+4/1i    -2/1+6/1i\n4/1+0/1i    4/1+2/1i    4/1+4/1i    4/1+6/1i\n" , (m4.add(m4).toString()));
 		}
 		catch(Exception e)
 		{
@@ -190,7 +190,7 @@ public class TestMatrix
 		arr[3] = new MathVector(s);
 		arr[4] = new MathVector(s);
 		Matrix tmp = new Matrix(arr);
-		Assert.assertEquals("Should be 20/1  20/1  20/1\n30/1  30/1  30/1\n", "20/1  20/1  20/1\n30/1  30/1  30/1\n" , (m1.mul(tmp).toString()));
+		Assert.assertEquals("Should be 20/1    20/1    20/1\n30/1    30/1    30/1\n", "20/1    20/1    20/1\n30/1    30/1    30/1\n" , (m1.mul(tmp).toString()));
 		tmp.mul(m1);
 		Assert.fail("Exception expeted : The multiplication matrix is not suitable.");
 		}
@@ -240,11 +240,11 @@ public class TestMatrix
 		try
 		{
 			m1.rowSweitching(1, 0);
-			Assert.assertEquals("Should be 3/1  3/1  3/1  3/1  3/1\n0/1  1/1  2/1  3/1  4/1\n", "3/1  3/1  3/1  3/1  3/1\n0/1  1/1  2/1  3/1  4/1\n" , m1.toString());
+			Assert.assertEquals("Should be 3/1    3/1    3/1    3/1    3/1\n0/1    1/1    2/1    3/1    4/1\n", "3/1    3/1    3/1    3/1    3/1\n0/1    1/1    2/1    3/1    4/1\n" , m1.toString());
 			m1.rowSweitching(1, 0);
-			Assert.assertEquals("Should be 0/1  1/1  2/1  3/1  4/1\n3/1  3/1  3/1  3/1  3/1\n", "0/1  1/1  2/1  3/1  4/1\n3/1  3/1  3/1  3/1  3/1\n", m1.toString());
+			Assert.assertEquals("Should be 0/1    1/1    2/1    3/1    4/1\n3/1    3/1    3/1    3/1    3/1\n", "0/1    1/1    2/1    3/1    4/1\n3/1    3/1    3/1    3/1    3/1\n", m1.toString());
 			m4.rowSweitching(0, 1);
-			Assert.assertEquals("Should be 2/1+0/1i  2/1+1/1i  2/1+2/1i  2/1+3/1i\n-1/1+0/1i  -1/1+1/1i  -1/1+2/1i  -1/1+3/1i\n", "2/1+0/1i  2/1+1/1i  2/1+2/1i  2/1+3/1i\n-1/1+0/1i  -1/1+1/1i  -1/1+2/1i  -1/1+3/1i\n" , m4.toString());
+			Assert.assertEquals("Should be 2/1+0/1i    2/1+1/1i    2/1+2/1i    2/1+3/1i\n-1/1+0/1i    -1/1+1/1i    -1/1+2/1i    -1/1+3/1i\n", "2/1+0/1i    2/1+1/1i    2/1+2/1i    2/1+3/1i\n-1/1+0/1i    -1/1+1/1i    -1/1+2/1i    -1/1+3/1i\n" , m4.toString());
 		
 		}
 		catch(Exception e)
@@ -274,7 +274,7 @@ public class TestMatrix
 		try
 		{
 			m1.rowSweitching(0,0);
-			Assert.assertEquals("Should be 0/1  1/1  2/1  3/1  4/1\n3/1  3/1  3/1  3/1  3/1\n", "0/1  1/1  2/1  3/1  4/1\n3/1  3/1  3/1  3/1  3/1\n", m1.toString());		
+			Assert.assertEquals("Should be 0/1    1/1    2/1    3/1    4/1\n3/1    3/1    3/1    3/1    3/1\n", "0/1    1/1    2/1    3/1    4/1\n3/1    3/1    3/1    3/1    3/1\n", m1.toString());		
 		}
 		catch(Exception e)
 		{
@@ -284,9 +284,33 @@ public class TestMatrix
 	@Test 
 	public void testTranspose()
 	{
-		Assert.assertEquals("Should be 0/1  3/1\n1/1  3/1\n2/1  3/1\n3/1  3/1\n4/1  3/1\n", "0/1  3/1\n1/1  3/1\n2/1  3/1\n3/1  3/1\n4/1  3/1\n", (m1.transpose()).toString());
-		Assert.assertEquals("Should be -1/1+0/1i  -1/1+0/1i  2/1+0/1i\n-1/1+1/1i  -1/1+1/1i  2/1+1/1i\n-1/1+2/1i  -1/1+2/1i  2/1+2/1i\n-1/1+3/1i  -1/1+3/1i  2/1+3/1i\n", "-1/1+0/1i  -1/1+0/1i  2/1+0/1i\n-1/1+1/1i  -1/1+1/1i  2/1+1/1i\n-1/1+2/1i  -1/1+2/1i  2/1+2/1i\n-1/1+3/1i  -1/1+3/1i  2/1+3/1i\n", ((m7.transpose().toString())));
-		Assert.assertEquals("Should be -1/1+0/1i  -1/1+1/1i  -1/1+2/1i  -1/1+3/1i\n2/1+0/1i  2/1+1/1i  2/1+2/1i  2/1+3/1i\n", "-1/1+0/1i  -1/1+1/1i  -1/1+2/1i  -1/1+3/1i\n2/1+0/1i  2/1+1/1i  2/1+2/1i  2/1+3/1i\n" , ((m4.transpose()).transpose()).toString());
+		Assert.assertEquals("Should be 0/1    3/1\n1/1    3/1\n2/1    3/1\n3/1    3/1\n4/1    3/1\n", "0/1    3/1\n1/1    3/1\n2/1    3/1\n3/1    3/1\n4/1    3/1\n", (m1.transpose()).toString());
+		Assert.assertEquals("Should be -1/1+0/1i    -1/1+0/1i    2/1+0/1i\n-1/1+1/1i    -1/1+1/1i    2/1+1/1i\n-1/1+2/1i    -1/1+2/1i    2/1+2/1i\n-1/1+3/1i    -1/1+3/1i    2/1+3/1i\n", "-1/1+0/1i    -1/1+0/1i    2/1+0/1i\n-1/1+1/1i    -1/1+1/1i    2/1+1/1i\n-1/1+2/1i    -1/1+2/1i    2/1+2/1i\n-1/1+3/1i    -1/1+3/1i    2/1+3/1i\n", ((m7.transpose().toString())));
+		Assert.assertEquals("Should be -1/1+0/1i    -1/1+1/1i    -1/1+2/1i    -1/1+3/1i\n2/1+0/1i    2/1+1/1i    2/1+2/1i    2/1+3/1i\n", "-1/1+0/1i    -1/1+1/1i    -1/1+2/1i    -1/1+3/1i\n2/1+0/1i    2/1+1/1i    2/1+2/1i    2/1+3/1i\n" , ((m4.transpose()).transpose()).toString());
 
+	}
+	@Test
+	public void TestSolve()
+	{
+		try
+		{
+			System.out.println("m1 \n" +m1.toString());
+			System.out.println("m1 solve \n" +m1.solve().toString());
+			Assert.assertEquals("Should be 1/1    0/1    -1/1    -2/1    -3/1\n0/1    1/1    2/1    3/1    4/1\n", "1/1    0/1    -1/1    -2/1    -3/1\n0/1    1/1    2/1    3/1    4/1\n", (m1.solve()).toString());
+			Assert.assertEquals("Should be 1/1+0/1i    0/1+0/1i    -1/1+0/1i    -2/1+0/1i\n0/1+0/1i    1/1+0/1i    2/1+0/1i    3/1+0/1i\n", "1/1+0/1i    0/1+0/1i    -1/1+0/1i    -2/1+0/1i\n0/1+0/1i    1/1+0/1i    2/1+0/1i    3/1+0/1i\n", (m4.solve()).toString());
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		try
+		{
+			//System.out.println(m5.toString());
+			//m5.solve();
+		}
+		catch(Exception e)
+		{
+			//System.out.println(e.getMessage());
+		}
 	}
 }
