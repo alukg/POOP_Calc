@@ -51,6 +51,8 @@ public class Complex implements Scalar {
     @Override
     public Scalar mul(Scalar s)throws Exception
     {
+    	if(s instanceof Complex)
+    	{
         Rational newReal = (Rational)(this.real.mul(((Complex)(s)).getReal()));
         Rational newReal2 = (Rational)(this.imaginary.mul(((Complex)(s)).getImaginary()));
         newReal2 = (Rational)(newReal2.neg());
@@ -60,6 +62,9 @@ public class Complex implements Scalar {
         newReal = (Rational)(newReal.add(newReal2));
         Complex ans = new Complex(newReal, newImaginary);
         return ans;
+    	}
+    	else
+    		throw new Exception("The multiplication scalar is not from the same type");
     }
 
     @Override

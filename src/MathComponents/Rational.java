@@ -85,10 +85,15 @@ public class Rational implements Scalar {
     @Override
     public Scalar mul(Scalar s)throws Exception
     {
+    	if(s instanceof Rational)
+    	{
         int newNumerator = this.numerator *((Rational)(s)).getNumerator();
         int newDenomator = this.demonator * ((Rational)(s)).getDemonator();
         int gcd = gcd(newNumerator, newDenomator);
         return new Rational((newNumerator / gcd), (newDenomator / gcd));
+    	}
+    	else
+    		throw new Exception("The multiplication scalar is not from the same type");
     }
 
     public Scalar neg() throws Exception
