@@ -62,12 +62,19 @@ public class Rational implements Scalar {
     @Override
     public Scalar add(Scalar s) throws Exception
     {
+    	if(s instanceof Rational)
+    	{
         int sDemonator = ((Rational)(s)).getDemonator();
         int sNumberator = ((Rational)(s)).getNumerator();
         int newNumerator = this.demonator *sNumberator + this.numerator* sDemonator;
         int newDenomator = this.demonator * sDemonator;
         int gcd = gcd(newNumerator, newDenomator);
         return new Rational((newNumerator / gcd), (newDenomator / gcd));
+    	}
+    	else
+    	{
+    		throw new Exception("The added scalar is not from the same type");
+    	}
     }
     private int gcd(int a, int b)
     {

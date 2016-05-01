@@ -36,9 +36,16 @@ public class Complex implements Scalar {
     @Override
     public Scalar add(Scalar s)throws Exception
     {
+    	if(s instanceof Complex)
+    	{
         Rational newReal = (Rational)(this.real.add(((Complex)(s)).getReal()));
         Rational newImaginary = (Rational)(this.imaginary.add(((Complex)(s)).getImaginary()));
         return new Complex(newReal, newImaginary);
+    	}
+    	else
+    	{
+    		throw new Exception("The added scalar is not from the same type");
+    	}
     }
 
     @Override

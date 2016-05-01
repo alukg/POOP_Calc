@@ -2,7 +2,6 @@ package Testing;
 import MathComponents.*;
 import org.junit.*;
 
-
 public class TestRational
 {
 	private Rational r1;

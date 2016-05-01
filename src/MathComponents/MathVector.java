@@ -4,20 +4,26 @@ public class MathVector {
     private int size;
     private Scalar[] vectorParm;
 
-    public MathVector(Scalar[] vec) throws Exception {
+    public MathVector(Scalar[] vec) throws Exception 
+    {
         this.size = vec.length;
         this.vectorParm = new Scalar[vec.length];
-        for (int i=0;i<vec.length;i++){
-            if(!(((vec[i] instanceof Complex)&&(vec[0] instanceof Complex))||((vec[i] instanceof Rational)&&(vec[0] instanceof Rational)))){
-                throw new Exception("The parameters is not from the same type");
-            }
-            else{
-                if (vec[i] instanceof Complex) {
-                    this.vectorParm[i] = new Complex((Complex) vec[i]);
-                } else {
+        if(checkIfAllScalarsAreSameType(vec))
+         {
+            for (int i=0;i<vec.length;i++)
+            {
+            	if (vec[i] instanceof Complex) {
+            		this.vectorParm[i] = new Complex((Complex) vec[i]);
+            		} 
+            	else 
+            	{
                     this.vectorParm[i] = new Rational((Rational) vec[i]);
-                }
+            	}
             }
+         }
+        else
+        {
+        	throw new Exception("The parameters are not from the same type");
         }
     }
     public MathVector(int size)
@@ -29,19 +35,22 @@ public class MathVector {
     		this.vectorParm[i] = null;
     	}
     }
-    public MathVector(MathVector vec) throws Exception{
-        this.size = vec.getSize();
-        this.vectorParm = new Scalar[vec.getSize()];
-        for (int i=0;i<vec.getSize();i++){
-            if ((vec.getVectorParm())[i] instanceof Complex) {
-                this.vectorParm[i] = new Complex((Complex)(vec.getVectorParm()[i]));
-            }
-            else {
-                this.vectorParm[i] = new Rational((Rational)(vec.getVectorParm()[i]));
-            }
-        }
+    public MathVector(MathVector vec) throws Exception
+    {
+    	this(vec.getVectorParm());
     }
-
+    private Boolean checkIfAllScalarsAreSameType(Scalar[] vec)
+    {
+    	for(int i = 0; i < vec.length; i++)
+    	{
+    		if(!(((vec[i] instanceof Complex)&&(vec[0] instanceof Complex))||((vec[i] instanceof Rational)&&(vec[0] instanceof Rational))))
+    		{
+    			
+    			return false;
+    		}
+    	}
+    	return true;
+    }
     public int getSize(){
         return size;
     }
@@ -59,7 +68,15 @@ public class MathVector {
             Scalar[] toAdd = addedVector.getVectorParm();
             for(int i = 0; i < this.size; i++)
             {
-            	newVactorParm[i] = newVactorParm[i].add(toAdd[i]);
+            	Scalar tmp = newVactorParm[i].add(toAdd[i]);
+            	if(tmp instanceof Rational)
+            	{
+            		newVactorParm[i] = new Rational((Rational)tmp);
+            	}
+            	else
+            	{
+            		newVactorParm[i] = new Complex((Complex)tmp);
+            	}
             }
             MathVector newMathVector = new MathVector(newVactorParm);
             return newMathVector;
@@ -90,7 +107,7 @@ public class MathVector {
                 ans = ans + this.vectorParm[i].toString();
             }
             else{
-                ans = ans + this.vectorParm[i].toString() + "    ";
+                ans = ans + this.vectorParm[i].toString() + "  ";
             }
     	}
     	return ans;

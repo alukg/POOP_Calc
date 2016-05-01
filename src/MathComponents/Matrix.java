@@ -8,36 +8,34 @@ public class Matrix
 
 	public Matrix(Matrix mat) throws Exception
 	{
-		this.rows= mat.getRows();
-		this.columns = mat.getColumns();
-		this.arrVector = new MathVector[rows];
+		this(mat.getArrVector());
+	}
+	public Matrix(MathVector[] arrVector) throws Exception
+	{
+		this.rows = arrVector.length;
+		this.columns = arrVector[0].getSize();
+		this.arrVector = new MathVector[this.rows];
 		for(int i = 0; i < this.rows; i++)
 		{
-			if(!(((mat.getArrVector()[0].getVectorParm()[0] instanceof Complex)&&(mat.getArrVector()[i].getVectorParm()[0] instanceof Complex))
-					||((mat.getArrVector()[0].getVectorParm()[0] instanceof Rational)&&(mat.getArrVector()[i].getVectorParm()[0] instanceof Rational))))
+			if(!(((arrVector[0].getVectorParm()[0] instanceof Complex)&&(arrVector[i].getVectorParm()[0] instanceof Complex))
+					||((arrVector[0].getVectorParm()[0] instanceof Rational)&&(arrVector[i].getVectorParm()[0] instanceof Rational))))
 					{
 				throw new Exception("The parameters are not from the same type");
 					}
 		}
         for(int i = 0; i < this.rows; i++)
 		{
-			if (mat.arrVector[i].getSize() != this.columns)
+			if (arrVector[i].getSize() != this.columns)
 			{
-				 throw new Exception("The number of scalars in the vector "+mat.arrVector[i].toString()+" is not corresponding to the matrix.");
+				 throw new Exception("The number of scalars in the vector "+arrVector[i].toString()+" is not corresponding to the matrix.");
 			}
 			else
 			{
-				this.arrVector[i] = new MathVector(mat.arrVector[i]);
+				this.arrVector[i] = new MathVector(arrVector[i]);
 			}
 		}
 	}
-	public Matrix(MathVector[] arrVector)
-	{
-		this.arrVector = arrVector;
-		this.rows = arrVector.length;
-		this.columns = arrVector[0].getSize();
-	}
-	public Matrix(int rows, int columns)
+	private Matrix(int rows, int columns)
 	{
 		this.rows = rows;
 		this.columns = columns;
@@ -51,14 +49,14 @@ public class Matrix
 	{
 		Matrix ans;
 		if(mat.getColumns() != this.columns || mat.getRows() != this.rows)
-			 {
+		{
 			throw new Exception("The added matrix is not suitable.");
-			 }
+		}
 		else
 		{
-			ans = this;
+			ans = new Matrix(this.getRows(), this.getColumns());
 			for(int i = 0; i < this.rows; i++)
-				ans.arrVector[i] = ans.arrVector[i].add(mat.getArrVector()[i]);
+				ans.arrVector[i] = new MathVector(this.arrVector[i].add(mat.getArrVector()[i]));
 		}
 		return ans;
 	}
@@ -174,7 +172,7 @@ public class Matrix
 		String ans = "";
 		for(int i =0; i < this.rows; i++)
 		{
-			ans = ans +"\n" + this.arrVector[i].toString();
+			ans = ans + this.arrVector[i].toString() + "\n";
 		}
 		return ans;
 	}
