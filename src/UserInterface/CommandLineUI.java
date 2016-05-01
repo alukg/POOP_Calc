@@ -70,6 +70,7 @@ public class CommandLineUI implements UI {
         Matrix matrix = getMatrixFromUser(Integer.parseInt(splitSize[0]),Integer.parseInt(splitSize[1]));
         if(option.equals("3")){
             try{
+                System.out.println("The solution is:");
                 System.out.println(matrix.solve());
             }
             catch (Exception e){
@@ -84,7 +85,7 @@ public class CommandLineUI implements UI {
         }
     }
 
-    private Matrix getMatrixFromUser(int rows, int columns){
+    private Matrix getMatrixFromUser(int rows, int columns) throws Exception{
         Matrix mat = new Matrix(rows,columns);
         boolean succeeded = true;
         Scanner console = new Scanner(System.in);
@@ -120,7 +121,7 @@ public class CommandLineUI implements UI {
         return mat;
     }
 
-    private void add(Matrix mat) {
+    private void add(Matrix mat) throws Exception{
         Scanner console = new Scanner(System.in);
         System.out.println("Insert the second matrix size: rows,columns");
         String matrixSize = console.next();
@@ -133,6 +134,7 @@ public class CommandLineUI implements UI {
         System.out.println("Insert the second matrix:");
         Matrix matrix = getMatrixFromUser(Integer.parseInt(splitSize[0]),Integer.parseInt(splitSize[1]));
         try{
+            System.out.println("The solution is:");
             System.out.println(mat.add(matrix));
         }
         catch(Exception e){
@@ -140,7 +142,7 @@ public class CommandLineUI implements UI {
         }
     }
 
-    private void mul(Matrix mat){
+    private void mul(Matrix mat) throws Exception {
         Scanner console = new Scanner(System.in);
         System.out.println("Insert the second matrix size: rows,columns");
         String matrixSize = console.next();
@@ -153,6 +155,7 @@ public class CommandLineUI implements UI {
         System.out.println("Insert the second matrix:");
         Matrix matrix = getMatrixFromUser(Integer.parseInt(splitSize[0]),Integer.parseInt(splitSize[1]));
         try{
+            System.out.println("The solution is:");
             System.out.println(mat.mul(matrix));
         }
         catch(Exception e){
