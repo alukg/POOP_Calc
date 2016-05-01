@@ -1,7 +1,5 @@
 package UserInterface;
 
-import MathComponents.Matrix;
-
 public class Checks {
     public static boolean checkMatrixSize(String matrixSize){
         if (matrixSize.indexOf(',')<0) return false;
@@ -36,7 +34,6 @@ public class Checks {
                 if(!isComplex(vectorParm[i])) return false;
             }
         }
-
         return true;
     }
 
@@ -51,7 +48,6 @@ public class Checks {
     }
 
     private static boolean isRational (String s){
-
         String[] split = new String[2];
         split = s.split("\\/",2);
         if (split[0]==null || split[1]==null || Integer.parseInt(split[1])==0) return false;
