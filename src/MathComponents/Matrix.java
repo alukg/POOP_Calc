@@ -39,7 +39,7 @@ public class Matrix
 			}
 		}
 	}
-	private Matrix(int rows, int columns)
+	public Matrix(int rows, int columns)
 	{
 		this.rows = rows;
 		this.columns = columns;
@@ -64,7 +64,7 @@ public class Matrix
 	}
 	 /** 
 	  * The function returns the sum of the current matrix with the variable mat.
-	  * @throws An exception that the added matrix is not suitable.
+	  * @throws an exception that the added matrix is not suitable.
 	  * @param  mat saves the added matrix.
 	  * @return The sum of the matrixes.
 	 ***/
@@ -85,7 +85,7 @@ public class Matrix
 	}
 	/** 
 	  * The function returns the multiplication of the current matrix with the variable mat.
-	  * @throws An exception that the multiplication matrix is not suitable.
+	  * @throws an exception that the multiplication matrix is not suitable.
 	  * @param  mat saves the multiplied matrix.
 	  * @return The multiplication of the matrixes.
 	 ***/
@@ -125,7 +125,7 @@ public class Matrix
 	}
 	/** 
 	  * The function switch the rows of the current matrix.
-	  * @throws An exception that a number of row doesn't exists.
+	  * @throws an exception that a number of row doesn't exists.
 	  * @param  i saves one row to switch.
 	  * @param j saves the second row to switch between.
 	 ***/
@@ -144,7 +144,7 @@ public class Matrix
 	}
 	/** 
 	  * The function returns the elimination matrix.
-	  * @throws An exception that there is no unique solution for the current matrix.
+	  * @throws an exception that there is no unique solution for the current matrix.
 	  * @return The elimination matrix.
 	 ***/
 	public Matrix solve() throws Exception

@@ -72,7 +72,7 @@ public class CommandLineUI implements UI {
         Scanner console = new Scanner(System.in);
         System.out.println("Insert the matrix size: rows,columns");
         String matrixSize = console.next();
-        while(!checkMatrixSize(matrixSize)){ //While not inserted a legal matrix size.
+        while(!checkMatrixSize(matrixSize,option)){ //While not inserted a legal matrix size.
             System.out.println("Input is not good.");
             System.out.println("Insert again the matrix size: rows,columns");
             matrixSize = console.next(); //Ask again for matrix size.

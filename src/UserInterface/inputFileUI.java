@@ -79,7 +79,7 @@ public class InputFileUI implements UI {
     private void function(String option) throws Exception {
         System.out.println("Insert the matrix size: rows,columns");
         String matrixSize = reader.readLine().trim();
-        if(!checkMatrixSize(matrixSize)){ //Checks if the matrix size that inserted is from the wanted pattern.
+        if(!checkMatrixSize(matrixSize,option)){ //Checks if the matrix size that inserted is from the wanted pattern.
             System.out.println("Wrong matrix size input");
             System.exit(0);
         }
