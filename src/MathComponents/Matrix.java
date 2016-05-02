@@ -1,11 +1,15 @@
 package MathComponents;
 
+/**
+ * The class that represents a matrix. 
+ *
+ */
 public class Matrix
 {
 	private MathVector[] arrVector ;
 	private int rows;
 	private int columns;
-
+	//Constructors
 	public Matrix(Matrix mat) throws Exception
 	{
 		this(mat.getArrVector());
@@ -18,14 +22,14 @@ public class Matrix
 		for(int i = 0; i < this.rows; i++)
 		{
 			if(!(((arrVector[0].getVectorParm()[0] instanceof Complex)&&(arrVector[i].getVectorParm()[0] instanceof Complex))
-					||((arrVector[0].getVectorParm()[0] instanceof Rational)&&(arrVector[i].getVectorParm()[0] instanceof Rational))))
+					||((arrVector[0].getVectorParm()[0] instanceof Rational)&&(arrVector[i].getVectorParm()[0] instanceof Rational)))) //Check if the parameters of the variable arrVector are from the same type.
 					{
 				throw new Exception("The parameters are not from the same type");
 					}
 		}
         for(int i = 0; i < this.rows; i++)
 		{
-			if (arrVector[i].getSize() != this.columns)
+			if (arrVector[i].getSize() != this.columns) //Check if all the vectors at arrVector are from the same size.
 			{
 				 throw new Exception("The number of scalars in the vector "+arrVector[i].toString()+" is not corresponding to the matrix.");
 			}
@@ -45,6 +49,25 @@ public class Matrix
 			this.arrVector[i] = new MathVector(this.columns);
 		}
 	}
+	//Getters
+	public int getRows()
+	{
+		return this.rows;
+	}
+	public int getColumns()
+	{
+		return this.columns;
+	}
+	public MathVector[] getArrVector()
+	{
+		return this.arrVector;
+	}
+	 /** 
+	  * The function returns the sum of the current matrix with the variable mat.
+	  * @throws An exception that the added matrix is not suitable.
+	  * @param  mat saves the added matrix.
+	  * @return The sum of the matrixes.
+	 ***/
 	public Matrix add(Matrix mat) throws Exception
 	{
 		Matrix ans;
@@ -60,6 +83,12 @@ public class Matrix
 		}
 		return ans;
 	}
+	/** 
+	  * The function returns the multiplication of the current matrix with the variable mat.
+	  * @throws An exception that the multiplication matrix is not suitable.
+	  * @param  mat saves the multiplied matrix.
+	  * @return The multiplication of the matrixes.
+	 ***/
 	public Matrix mul(Matrix mat) throws Exception
 	{
 		if(this.columns != mat.getRows())
@@ -77,6 +106,10 @@ public class Matrix
 		}
 		return ans;
 	}
+	/** 
+	  * The function returns the transpose matrix of the current matrix.
+	  * @return The transpose matrix.
+	 ***/
 	public Matrix transpose()
 	{
 		Matrix ans = new Matrix(this.columns, this.rows);
@@ -90,9 +123,15 @@ public class Matrix
 		}
 		return ans;
 	}
+	/** 
+	  * The function switch the rows of the current matrix.
+	  * @throws An exception that a number of row doesn't exists.
+	  * @param  i saves one row to switch.
+	  * @param j saves the second row to switch between.
+	 ***/
 	public void rowSweitching(int i, int j) throws Exception
 	{
-		if(i > this.rows || j > this.rows || i < 0 || j <0)
+		if(i > this.rows || j > this.rows || i < 0 || j <0)//Check if the rows to be switch exists.
 		{
 			throw new Exception("Rows to switch are illegal.");
 		}
@@ -103,7 +142,11 @@ public class Matrix
 			this.arrVector[j] = new MathVector(tmp);
 		}
 	}
-
+	/** 
+	  * The function returns the elimination matrix.
+	  * @throws An exception that there is no unique solution for the current matrix.
+	  * @return The elimination matrix.
+	 ***/
 	public Matrix solve() throws Exception
 	{
 		Matrix ans = new Matrix(this);
@@ -154,19 +197,10 @@ public class Matrix
 
 		return ans;
 	}
-
-	public int getRows()
-	{
-		return this.rows;
-	}
-	public int getColumns()
-	{
-		return this.columns;
-	}
-	public MathVector[] getArrVector()
-	{
-		return this.arrVector;
-	}
+	/** 
+	  * The function returns a string that show the matrix.
+	  * @return a string representation of the current matrix.
+	 ***/
 	public String toString()
 	{
 		String ans = "";

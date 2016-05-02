@@ -26,7 +26,8 @@ public class TestRational
 	}
 	
 	@Test
-	public void testTostring() {
+	public void testTostring() 
+	{
 		Assert.assertEquals("Should be 0/1 ","0/1", r1.toString());
 		Assert.assertEquals("Should be -1/4 ","-1/4", r2.toString());
 		Assert.assertEquals("Should be -1/4 ","-1/4", r3.toString());
@@ -35,24 +36,64 @@ public class TestRational
 	@Test
 	public void testAdd() throws Exception
 	{
+		try
+		{
 		Assert.assertEquals("Should be 0/1 ","0/1", (r1.add(r1)).toString());
 		Assert.assertEquals("Should be -1/7 ","-1/7", (r2.add(r4)).toString());
 		Assert.assertEquals("Should be -1/2 ","-1/2", (r2.add(r3)).toString());
 		Assert.assertEquals("Should be 3/28 ","3/28", (r4.add(r1)).toString());
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		try
+		{
+			Rational tmp = (Rational)r1.add(new Complex());
+			Assert.fail("Exceptiom expected : The added scalar is not from the same type.");
+		}
+		catch(Exception e)
+		{
+		}
 	}
 
 	@Test
 	public void testMul() throws Exception
 	{
+		try
+		{
 		Assert.assertEquals("Should be 0/1 ","0/1", (r1.mul(r1)).toString());
 		Assert.assertEquals("Should be -3/112 ","-3/112", (r2.mul(r4)).toString());
 		Assert.assertEquals("Should be 1/16 ","1/16", (r2.mul(r3)).toString());
 		Assert.assertEquals("Should be 0/1 ","0/1", (r4.mul(r1)).toString());
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		try
+		{
+			Rational tmp = (Rational)r1.mul(new Complex());
+			Assert.fail("Exceptiom expected : The multiplied scalar is not from the same type.");
+		}
+		catch(Exception e)
+		{
+		}
 	}
 
 	@Test
 	public void testInv() throws Exception
 	{
+		try
+		{
+			Assert.assertEquals("Should be -4/1 ","-4/1",(r2.inv()).toString());
+			Assert.assertEquals("Should be -4/1 ","-4/1",(r3.inv()).toString());
+			Assert.assertEquals("Should be 28/3 ","28/3",(r4.inv()).toString());
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
 		try
 		{
 			Rational tmp = (Rational)r1.inv();
@@ -61,17 +102,21 @@ public class TestRational
 		catch(Exception e) 
 		{
 		}
-			Assert.assertEquals("Should be -4/1 ","-4/1",(r2.inv()).toString());
-			Assert.assertEquals("Should be -4/1 ","-4/1",(r3.inv()).toString());
-			Assert.assertEquals("Should be 28/3 ","28/3",(r4.inv()).toString());
-		}
+	}
 
 	@Test
 	public void testNeg() throws Exception
 	{
+		try
+		{
 		Assert.assertEquals("Should be 0/1 ","0/1", (r1.neg()).toString());
 		Assert.assertEquals("Should be 1/4 ","1/4", (r2.neg()).toString());
 		Assert.assertEquals("Should be 1/4 ","1/4", (r3.neg()).toString());
 		Assert.assertEquals("Should be -3/28 ","-3/28", (r4.neg()).toString());
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
 	}
 }

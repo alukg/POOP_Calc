@@ -1,10 +1,15 @@
 package MathComponents;
 
+/**
+ * The class that represents a complex number. 
+ *
+ */
 public class Complex implements Scalar {
+	//Variables
     private Rational real;
     private Rational imaginary;
     static final Complex zeroComplex = new Complex();
-
+    //Constructors
     public Complex(Rational real, Rational imaginary) throws Exception
     {
         this.real = new Rational(real);
@@ -19,12 +24,7 @@ public class Complex implements Scalar {
     	this.real = new Rational();
     	this.imaginary = new Rational();
     }
-
-    public boolean equal(Complex s) {
-        if (!s.getReal().equal(this.real) || !s.getImaginary().equal(this.imaginary)) return false;
-        return true;
-    }
-
+    //Getters
     public Rational getReal()
     {
         return this.real;
@@ -33,7 +33,21 @@ public class Complex implements Scalar {
     {
         return this.imaginary;
     }
-    @Override
+    /** 
+	  * The function returns whether the current complex number is equal to the variable comp.
+	  * @param  comp saves the complex number to compare with.
+	  * @return true if the current complex number and comp are equals else false.
+	 ***/
+    public boolean equal(Complex comp) {
+        if (!comp.getReal().equal(this.real) || !comp.getImaginary().equal(this.imaginary)) return false;
+        return true;
+    }
+    /** 
+	  * The function returns the sum of the current complex number with the variable s.
+	  * @throws An exception that the added scalar is not of complex type.
+	  * @param  s saves the complex number to add.
+	  * @return The sum of the current complex number and the variable s.
+	 ***/
     public Scalar add(Scalar s)throws Exception
     {
     	if(s instanceof Complex)
@@ -47,10 +61,16 @@ public class Complex implements Scalar {
     		throw new Exception("The added scalar is not from the same type");
     	}
     }
-
-    @Override
+    /** 
+	  * The function returns the multiplication of the current complex number with the variable s.
+	  * @throws An exception that the multiplied scalar is not of complex type.
+	  * @param  s saves the complex number to multiply.
+	  * @return The multiplication of the current complex number with the variable s.
+	 ***/
     public Scalar mul(Scalar s)throws Exception
     {
+    	if(s instanceof Complex)
+    	{
         Rational newReal = (Rational)(this.real.mul(((Complex)(s)).getReal()));
         Rational newReal2 = (Rational)(this.imaginary.mul(((Complex)(s)).getImaginary()));
         newReal2 = (Rational)(newReal2.neg());
@@ -60,36 +80,47 @@ public class Complex implements Scalar {
         newReal = (Rational)(newReal.add(newReal2));
         Complex ans = new Complex(newReal, newImaginary);
         return ans;
+    	}
+    	else
+    		throw new Exception("The multiplication scalar is not from the same type");
     }
-
-    @Override
-    public Scalar neg()throws Exception
+    /** 
+	  * The function returns the negative of the current complex number.
+	  * @throws An exception if denominator is 0 in a rational number.
+	  * @return The negative of the current complex number.
+	 ***/
+    public Scalar neg() throws Exception
     {
         Rational newReal = (Rational)(this.real.neg());
         Rational newImaginary = (Rational)(this.imaginary.neg());
         return new Complex(newReal, newImaginary);
     }
-
-    @Override
+    /** 
+	  * The function returns the inverse of the current complex number.
+	  * @throws An exception if denominator is 0 in a rational number.
+	  * @return The inverse of the current complex number.
+	 ***/
     public Scalar inv( )throws Exception
     {
-        //Rational newReal = (Rational)(this.real.inv());
         Rational newImaginary = (Rational)(this.imaginary.neg());
         Complex tmp = new Complex(this.real, newImaginary);
-        Rational demonator = ((Complex)(tmp.mul(this))).getReal();
-        demonator = (Rational)(demonator.inv());
-        Complex ans = new Complex((Rational)(tmp.getReal().mul(demonator)), (Rational)(tmp.getImaginary().mul(demonator)));
+        Rational denominator = ((Complex)(tmp.mul(this))).getReal();
+        denominator = (Rational)(denominator.inv());
+        Complex ans = new Complex((Rational)(tmp.getReal().mul(denominator)), (Rational)(tmp.getImaginary().mul(denominator)));
         return ans;
     }
-
-    public String toString()
-    {
-        return this.real.toString()+"+"+this.imaginary.toString()+"i";
-    }
+    /** 
+	  * The function returns whether the current complex number is zero.
+	  * @return true if the current complex number is zero else false.
+	 ***/
     public Boolean IsZero()
     {
     	return (this.real.IsZero() && this.imaginary.IsZero());
     }
+    /** 
+	  * The function returns the absolute value of the current complex number.
+	  * @return the absolute value.
+	 ***/
     public double abs()
     {
     	try
@@ -97,7 +128,7 @@ public class Complex implements Scalar {
     	Scalar RealSquared = this.real.mul(this.real);
         Scalar ImgSquared = this.imaginary.mul(this.imaginary);
         Rational RealPlusImg = (Rational)RealSquared.add(ImgSquared);
-        double ans = (double)RealPlusImg.getNumerator()/RealPlusImg.getDemonator();
+        double ans = (double)RealPlusImg.getNumerator()/RealPlusImg.getdenominator();
         return Math.sqrt(ans);
     	}
     	catch(Exception e)
@@ -105,5 +136,13 @@ public class Complex implements Scalar {
     		System.out.println(e.getMessage());
     	}
     	return 0.0;
+    }
+    /** 
+	  * The function returns a string that show the complex number.
+	  * @return a string representation of the current complex.
+	 ***/
+    public String toString()
+    {
+        return this.real.toString()+"+"+this.imaginary.toString()+"i";
     }
 }
