@@ -7,20 +7,29 @@ import MathComponents.Matrix;
 import static UserInterface.Checks.checkVector;
 import static UserInterface.Checks.checkMatrixSize;
 
+/**
+ * UI that handle with user input from the command line.
+ */
 public class CommandLineUI implements UI {
-    private String field;
+    private String field; //Determine which field to work with, Complex or Rational.
 
+    /**
+     * Constructor of the UI.
+     */
     public CommandLineUI(){
         this.field = "0";
     }
 
+    /**
+     * The main function of the UI, runs the program.
+     */
     public void play() {
         Scanner console = new Scanner(System.in);
 
         System.out.println("Please select the scalar field:");
         System.out.println("1) Rational Or 2) Complex");
-        while (this.field == "0") {
-            String inField = console.next();
+        while (this.field == "0") { //While not inserted a legal field value.
+            String inField = console.next(); //Gets the wanted field from the user.
             if (inField.equals("1") || inField.equals("2"))
                 this.field = inField;
             else {
@@ -33,20 +42,20 @@ public class CommandLineUI implements UI {
         System.out.println("2) Multiplication");
         System.out.println("3) Solving linear equation systems");
         System.out.println("4) Exit");
-        String option = console.next();
-        while (!(option.equals("1") || option.equals("2") || option.equals("3") || option.equals("4"))) {
+        String option = console.next(); //Gets the wanted option from the user.
+        while (!(option.equals("1") || option.equals("2") || option.equals("3") || option.equals("4"))) { //While not inserted a legal option value.
             System.out.println("Wring input, please select an option:");
             System.out.println("1) Addition");
             System.out.println("2) Multiplication");
             System.out.println("3) Solving linear equation systems");
             System.out.println("4) Exit");
-            option = console.next();
+            option = console.next(); //Ask for value again.
         }
         if (option.equals("4")) System.exit(0);
         else if (option.equals("1") || option.equals("2") || option.equals("3")) {
             System.out.println("You have selected option "+option);
             try{
-                function(option);
+                function(option); //Runs a solution function for the code arrangement, sends the chosen option.
             }
             catch(Exception e){
                 System.out.println(e.getMessage());
@@ -54,19 +63,24 @@ public class CommandLineUI implements UI {
         }
     }
 
+    /**
+     * Solution function for the code arrangement.
+     * @param option The chosen option by the user from 1-3 to calculate.
+     * @throws Exception
+     */
     private void function(String option) throws Exception {
         Scanner console = new Scanner(System.in);
         System.out.println("Insert the matrix size: rows,columns");
         String matrixSize = console.next();
-        while(!checkMatrixSize(matrixSize)){
+        while(!checkMatrixSize(matrixSize)){ //While not inserted a legal matrix size.
             System.out.println("Input is not good.");
             System.out.println("Insert again the matrix size: rows,columns");
-            matrixSize = console.next();
+            matrixSize = console.next(); //Ask again for matrix size.
         }
-        String[] splitSize = matrixSize.split(",",2);
+        String[] splitSize = matrixSize.split(",",2); //Splits the String for row and column size.
 
         if(option.equals("3")) System.out.println("Insert the matrix:");
-        else{ System.out.println("Insert the first matrix:"); }
+        else{ System.out.println("Insert the first matrix:"); } //For options 1,2 will be another matrix to insert.
         Matrix matrix = getMatrixFromUser(Integer.parseInt(splitSize[0]),Integer.parseInt(splitSize[1]));
         if(option.equals("3")){
             try{
@@ -85,15 +99,23 @@ public class CommandLineUI implements UI {
         }
     }
 
+    /**
+     * Creates a new matrix.
+     * @param rows Rows of the wanted matrix.
+     * @param columns Columns of the wanted matrix.
+     * @return Matrix that created by the given data.
+     * @throws Exception
+     */
     private Matrix getMatrixFromUser(int rows, int columns) throws Exception{
-        Matrix mat = new Matrix(rows,columns);
-        boolean succeeded = true;
+        Matrix mat = new Matrix(rows,columns); //Creates an empty matrix.
+        boolean succeeded; //Boolean value that determine at the end of the process if the inserted matrix is okay.
         Scanner console = new Scanner(System.in);
         do {
+            succeeded = true;
             for(int i=0;i<mat.getRows();i++){
                 String[] tempVectorParm = console.nextLine().split(" ",columns);
-                if(tempVectorParm.length!=columns) succeeded = false;
-                else if (!checkVector(tempVectorParm,field)) {
+                if(tempVectorParm.length!=columns) succeeded = false; //Checks if the inserted vector has enough components.
+                else if (!checkVector(tempVectorParm,field)) { //Checks if the inserted vector is from the wanted pattern in step to the inserted field.
                     succeeded = false;
                 }
                 else{
@@ -112,15 +134,19 @@ public class CommandLineUI implements UI {
                             mat.getArrVector()[i].getVectorParm()[num] = new Rational(Integer.parseInt(split[0]),Integer.parseInt(split[1]));
                         }
                     }
-                    succeeded = true;
                 }
             }
             if(!succeeded) System.out.println("Wrong input, insert the matrix again:");
         }
-        while(!succeeded);
+        while(!succeeded); //While the process didn't succeed, start the all process again.
         return mat;
     }
 
+    /**
+     * Calculate addition of two matrix.
+     * @param mat The first matrix.
+     * @throws Exception
+     */
     private void add(Matrix mat) throws Exception{
         Scanner console = new Scanner(System.in);
         System.out.println("Insert the second matrix size: rows,columns");
@@ -135,13 +161,18 @@ public class CommandLineUI implements UI {
         Matrix matrix = getMatrixFromUser(Integer.parseInt(splitSize[0]),Integer.parseInt(splitSize[1]));
         try{
             System.out.println("The solution is:");
-            System.out.println(mat.add(matrix));
+            System.out.println(mat.add(matrix)); //Print the first matrix added with the second.
         }
         catch(Exception e){
             System.out.println(e.getMessage());
         }
     }
 
+    /**
+     * Calculate multiplication of two matrix.
+     * @param mat The first matrix.
+     * @throws Exception
+     */
     private void mul(Matrix mat) throws Exception {
         Scanner console = new Scanner(System.in);
         System.out.println("Insert the second matrix size: rows,columns");
@@ -156,7 +187,7 @@ public class CommandLineUI implements UI {
         Matrix matrix = getMatrixFromUser(Integer.parseInt(splitSize[0]),Integer.parseInt(splitSize[1]));
         try{
             System.out.println("The solution is:");
-            System.out.println(mat.mul(matrix));
+            System.out.println(mat.mul(matrix)); //Print the first matrix multiplied with the second.
         }
         catch(Exception e){
             System.out.println(e.getMessage());
