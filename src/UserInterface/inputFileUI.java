@@ -20,9 +20,10 @@ public class InputFileUI implements UI {
      * Constructor of the UI.
      * @param txtFile The name of the txt file that the program will know to look for.
      */
-    public InputFileUI(String txtFile){
+    public InputFileUI(String txtFileName){
         this.field = "0";
-        String txtFilePath = Calculator.class.getProtectionDomain().getCodeSource().getLocation().getPath() + txtFile; //Gets the path of the running folder contains the jar file.
+        File file = new File(Calculator.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+        String txtFilePath = file.getParentFile().getPath() + "\\" + txtFileName; //Gets the path of the running folder contains the jar file.
         //Tries to create a reader of the inserted txt file. if the file not found return FileNotFoundException.
         try {
             this.reader =  new BufferedReader(new FileReader(txtFilePath));
