@@ -18,12 +18,12 @@
   </class>  
   <package id="3" language="java" name="MathComponents" project="POOP_Calc" file="/POOP_Calc/src/MathComponents" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="807" width="844" x="381" y="-160"/>    
+    <position height="807" width="795" x="400" y="-122"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="4" language="java" name="MathComponents.Complex" project="POOP_Calc" 
     file="/POOP_Calc/src/MathComponents/Complex.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="589" y="92"/>    
+    <position height="-1" width="-1" x="506" y="105"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -32,7 +32,7 @@
   </class>  
   <class id="5" language="java" name="MathComponents.MathVector" project="POOP_Calc" 
     file="/POOP_Calc/src/MathComponents/MathVector.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="804" y="355"/>    
+    <position height="-1" width="-1" x="764" y="306"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -41,7 +41,7 @@
   </class>  
   <class id="6" language="java" name="MathComponents.Matrix" project="POOP_Calc" 
     file="/POOP_Calc/src/MathComponents/Matrix.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="541" y="487"/>    
+    <position height="-1" width="-1" x="509" y="492"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -50,7 +50,7 @@
   </class>  
   <class id="7" language="java" name="MathComponents.Rational" project="POOP_Calc" 
     file="/POOP_Calc/src/MathComponents/Rational.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1079" y="116"/>    
+    <position height="-1" width="-1" x="1016" y="116"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -59,7 +59,7 @@
   </class>  
   <interface id="8" language="java" name="MathComponents.Scalar" project="POOP_Calc" 
     file="/POOP_Calc/src/MathComponents/Scalar.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="818" y="2"/>    
+    <position height="-1" width="-1" x="790" y="12"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -68,7 +68,7 @@
   </interface>  
   <package id="9" language="java" name="Testing" project="POOP_Calc" file="/POOP_Calc/src/Testing" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="347" width="1038" x="314" y="723"/>    
+    <position height="247" width="1033" x="315" y="723"/>    
     <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
   <class id="10" language="java" name="Testing.TestComplex" project="POOP_Calc" 
@@ -91,7 +91,7 @@
   </class>  
   <class id="12" language="java" name="Testing.TestMatrix" project="POOP_Calc" 
     file="/POOP_Calc/src/Testing/TestMatrix.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="444" y="895"/>    
+    <position height="-1" width="-1" x="464" y="855"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -149,196 +149,244 @@
     </display>  
   </interface>  
   <association id="19">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="20" name="c1"/>      
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="20" name="m3"/>      
       <multiplicity id="21" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="22">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="23" name="m5"/>      
+      <multiplicity id="24" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="25">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="26" name="c1"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="22">    
+  <association id="28">    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="23" name="r3"/>      
-      <multiplicity id="24" minimum="0" maximum="1"/>    
+      <attribute id="29" name="r3"/>      
+      <multiplicity id="30" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="25">    
+  <realization id="31">    
     <end type="SOURCE" refId="16"/>    
     <end type="TARGET" refId="18"/>  
   </realization>  
-  <association id="26">    
+  <association id="32">    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="27" name="mv1"/>      
-      <multiplicity id="28" minimum="0" maximum="1"/>    
+      <attribute id="33" name="mv1"/>      
+      <multiplicity id="34" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="29">    
+  <association id="35">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="30" name="vectorParm"/>      
-      <multiplicity id="31" minimum="0" maximum="2147483647"/>    
+      <attribute id="36" name="vectorParm"/>      
+      <multiplicity id="37" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="32">    
+  <association id="38">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="33" name="c4"/>      
-      <multiplicity id="34" minimum="0" maximum="1"/>    
+      <attribute id="39" name="c4"/>      
+      <multiplicity id="40" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="35">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="36" name="mv7"/>      
-      <multiplicity id="37" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="38">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="39" name="mv2"/>      
-      <multiplicity id="40" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <association id="41">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="42" name="real"/>      
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="42" name="mv7"/>      
       <multiplicity id="43" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="44">    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="45" name="mv4"/>      
+      <attribute id="45" name="mv2"/>      
       <multiplicity id="46" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="47">    
-    <bendpoint x="655" y="252"/>    
-    <bendpoint x="565" y="271"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="48" name="zeroComplex"/>      
-      <multiplicity id="49" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="50">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="51" name="c3"/>      
-      <multiplicity id="52" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="53">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="54" name="r4"/>      
-      <multiplicity id="55" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="56">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="8"/>  
-  </realization>  
-  <association id="57">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="58" name="r1"/>      
-      <multiplicity id="59" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="60">    
-    <bendpoint x="737" y="170"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="61" name="imaginary"/>      
-      <multiplicity id="62" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="63">    
     <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="64" name="m2"/>      
-      <multiplicity id="65" minimum="0" maximum="1"/>    
+      <attribute id="48" name="m4"/>      
+      <multiplicity id="49" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="66">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="67" name="arrVector"/>      
-      <multiplicity id="68" minimum="0" maximum="2147483647"/>    
+  <association id="50">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="51" name="real"/>      
+      <multiplicity id="52" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="53">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="54" name="mv4"/>      
+      <multiplicity id="55" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="56">    
+    <bendpoint x="572" y="265"/>    
+    <bendpoint x="482" y="284"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="57" name="zeroComplex"/>      
+      <multiplicity id="58" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="59">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="60" name="c3"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="62">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="63" name="m1"/>      
+      <multiplicity id="64" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="65">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="66" name="r4"/>      
+      <multiplicity id="67" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="68">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
   <association id="69">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="70" name="mv3"/>      
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="70" name="r1"/>      
       <multiplicity id="71" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="72">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="73" name="zeroRational"/>      
+    <bendpoint x="737" y="170"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="73" name="imaginary"/>      
       <multiplicity id="74" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="75">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="8"/>  
-  </realization>  
-  <association id="76">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="77" name="mv6"/>      
-      <multiplicity id="78" minimum="0" maximum="1"/>    
+  <association id="75">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="76" name="m2"/>      
+      <multiplicity id="77" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="78">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="79" name="arrVector"/>      
+      <multiplicity id="80" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="79">    
+  <association id="81">    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="80" name="mv5"/>      
-      <multiplicity id="81" minimum="0" maximum="1"/>    
+      <attribute id="82" name="mv3"/>      
+      <multiplicity id="83" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="82">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="83" name="r2"/>      
-      <multiplicity id="84" minimum="0" maximum="1"/>    
+  <association id="84">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="85" name="zeroRational"/>      
+      <multiplicity id="86" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="85">    
+  <realization id="87">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <association id="88">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="89" name="mv6"/>      
+      <multiplicity id="90" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="91">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="92" name="m7"/>      
+      <multiplicity id="93" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="94">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="95" name="mv5"/>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="97">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="98" name="m6"/>      
+      <multiplicity id="99" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="100">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="101" name="r2"/>      
+      <multiplicity id="102" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="103">    
     <end type="SOURCE" refId="17"/>    
     <end type="TARGET" refId="18"/>  
   </realization>  
-  <association id="86">    
+  <association id="104">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="87" name="c2"/>      
-      <multiplicity id="88" minimum="0" maximum="1"/>    
+      <attribute id="105" name="c2"/>      
+      <multiplicity id="106" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
