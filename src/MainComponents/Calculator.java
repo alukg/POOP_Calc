@@ -2,6 +2,8 @@ package MainComponents;
 
 import UserInterface.CommandLineUI;
 import UserInterface.InputFileUI;
+import UserInterface.UI;
+
 import java.io.IOException;
 
 /**
@@ -9,18 +11,19 @@ import java.io.IOException;
  * Determines which UI will work.
  */
 public class Calculator {
+    private static UI ui;
+
     public static void main(String[] args){
         if(args.length>0){ //if txt file name inserted.
-            InputFileUI IFUI = new InputFileUI(args[0]); //creates an instance of the InputFileUI.
-            try {
-                IFUI.play();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            ui = new InputFileUI(args[0]); //creates an instance of the InputFileUI.
         }
         else{ //if txt file name wasn't inserted.
-            CommandLineUI CLUI = new CommandLineUI();
-            CLUI.play();
+            ui = new CommandLineUI();
+        }
+        try {
+            ui.play();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
