@@ -294,23 +294,12 @@ public class TestMatrix
 	{
 		try
 		{
-			System.out.println("m1 \n" +m1.toString());
-			System.out.println("m1 solve \n" +m1.solve().toString());
 			Assert.assertEquals("Should be 1/1    0/1    -1/1    -2/1    -3/1\n0/1    1/1    2/1    3/1    4/1\n", "1/1    0/1    -1/1    -2/1    -3/1\n0/1    1/1    2/1    3/1    4/1\n", (m1.solve()).toString());
 			Assert.assertEquals("Should be 1/1+0/1i    0/1+0/1i    -1/1+0/1i    -2/1+0/1i\n0/1+0/1i    1/1+0/1i    2/1+0/1i    3/1+0/1i\n", "1/1+0/1i    0/1+0/1i    -1/1+0/1i    -2/1+0/1i\n0/1+0/1i    1/1+0/1i    2/1+0/1i    3/1+0/1i\n", (m4.solve()).toString());
 		}
 		catch(Exception e)
 		{
 			System.out.println(e.getMessage());
-		}
-		try
-		{
-			//System.out.println(m5.toString());
-			//m5.solve();
-		}
-		catch(Exception e)
-		{
-			//System.out.println(e.getMessage());
 		}
 	}
 }
