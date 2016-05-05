@@ -10,8 +10,7 @@ public class Rational implements Scalar {
     private int denominator;
     static final Rational zeroRational = new Rational();
     //Constructors
-    public Rational(int numberator, int denominator) throws Exception
-    {
+    public Rational(int numberator, int denominator) throws Exception {
         if(denominator == 0)
         {
             throw new Exception("denominator 0 is illegal.");
@@ -30,8 +29,7 @@ public class Rational implements Scalar {
     	this.denominator = 1;
     	this.numerator = 0;
     }
-    public Rational(Rational r) throws Exception
-    {
+    public Rational(Rational r) throws Exception {
         this(r.getNumerator(), r.getdenominator());
     }
     //Getters

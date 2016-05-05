@@ -4,78 +4,80 @@ import java.util.Scanner;
 import MathComponents.Complex;
 import MathComponents.Rational;
 import MathComponents.Matrix;
-import static UserInterface.Checks.checkVector;
-import static UserInterface.Checks.checkMatrixSize;
+import static Logic.Checks.checkVector;
+import static Logic.Checks.checkMatrixSize;
 
 /**
  * UI that handle with user input from the command line.
  */
 public class CommandLineUI implements UI {
     private String field; //Determine which field to work with, Complex or Rational.
+    private Scanner console;
 
     /**
      * Constructor of the UI.
      */
     public CommandLineUI(){
-        this.field = "0";
+        console = new Scanner(System.in);
     }
 
     /**
      * The main function of the UI, runs the program.
      */
     public void play() {
-        Scanner console = new Scanner(System.in);
+        while (true){
+            this.field = "0";
+            System.out.println();
+            System.out.println("Please select the scalar field:");
+            System.out.println("1) Rational Or 2) Complex");
 
-        System.out.println("Please select the scalar field:");
-        System.out.println("1) Rational Or 2) Complex");
-        while (this.field == "0") { //While not inserted a legal field value.
-            String inField = console.next(); //Gets the wanted field from the user.
-            if (inField.equals("1") || inField.equals("2"))
-                this.field = inField;
-            else {
-                System.out.println("Wrong input, please select the scalar field:");
-                System.out.println("1) Rational Or 2) Complex");
+            while (this.field == "0") { //While not inserted a legal field value.
+                String inField = console.nextLine(); //Gets the wanted field from the user.
+                if (inField.equals("1") || inField.equals("2"))
+                    this.field = inField;
+                else {
+                    System.out.println("Wrong input, please select the scalar field:");
+                    System.out.println("1) Rational Or 2) Complex");
+                }
             }
-        }
-        System.out.println("Please select an option:");
-        System.out.println("1) Addition");
-        System.out.println("2) Multiplication");
-        System.out.println("3) Solving linear equation systems");
-        System.out.println("4) Exit");
-        String option = console.next(); //Gets the wanted option from the user.
-        while (!(option.equals("1") || option.equals("2") || option.equals("3") || option.equals("4"))) { //While not inserted a legal option value.
-            System.out.println("Wring input, please select an option:");
+            System.out.println("Please select an option:");
             System.out.println("1) Addition");
             System.out.println("2) Multiplication");
             System.out.println("3) Solving linear equation systems");
             System.out.println("4) Exit");
-            option = console.next(); //Ask for value again.
-        }
-        if (option.equals("4")) System.exit(0);
-        else if (option.equals("1") || option.equals("2") || option.equals("3")) {
-            System.out.println("You have selected option "+option);
-            try{
-                function(option); //Runs a solution function for the code arrangement, sends the chosen option.
+            String option = console.nextLine(); //Gets the wanted option from the user.
+            while (!(option.equals("1") || option.equals("2") || option.equals("3") || option.equals("4"))) { //While not inserted a legal option value.
+                System.out.println("Wring input, please select an option:");
+                System.out.println("1) Addition");
+                System.out.println("2) Multiplication");
+                System.out.println("3) Solving linear equation systems");
+                System.out.println("4) Exit");
+                option = console.nextLine(); //Ask for value again.
             }
-            catch(Exception e){
-                System.out.println(e.getMessage());
+            if (option.equals("4")){
+            	System.out.println("Thank you for using our calculator, see you next time");
+            	System.exit(0);
+            }
+            else if (option.equals("1") || option.equals("2") || option.equals("3")) {
+                System.out.println("You have selected option "+option);
+                function(option); //Runs a solution function for the code arrangement, sends the chosen option.
             }
         }
     }
+
 
     /**
      * Solution function for the code arrangement.
      * @param option The chosen option by the user from 1-3 to calculate.
      * @throws Exception
      */
-    private void function(String option) throws Exception {
-        Scanner console = new Scanner(System.in);
+    private void function(String option) {
         System.out.println("Insert the matrix size: rows,columns");
-        String matrixSize = console.next();
+        String matrixSize = console.nextLine();
         while(!checkMatrixSize(matrixSize,option)){ //While not inserted a legal matrix size.
             System.out.println("Input is not good.");
             System.out.println("Insert again the matrix size: rows,columns");
-            matrixSize = console.next(); //Ask again for matrix size.
+            matrixSize = console.nextLine(); //Ask again for matrix size.
         }
         String[] splitSize = matrixSize.split(",",2); //Splits the String for row and column size.
 
@@ -106,10 +108,9 @@ public class CommandLineUI implements UI {
      * @return Matrix that created by the given data.
      * @throws Exception
      */
-    private Matrix getMatrixFromUser(int rows, int columns) throws Exception{
+    private Matrix getMatrixFromUser(int rows, int columns){
         Matrix mat = new Matrix(rows,columns); //Creates an empty matrix.
         boolean succeeded; //Boolean value that determine at the end of the process if the inserted matrix is okay.
-        Scanner console = new Scanner(System.in);
         do {
             succeeded = true;
             for(int i=0;i<mat.getRows();i++){
@@ -125,13 +126,23 @@ public class CommandLineUI implements UI {
                             String[] split = tempVectorParm[num].split("\\+",2);
                             String[] firstRat = split[0].split("\\/",2);
                             String[] secondRat = split[1].split("\\/",2);
-                            mat.getArrVector()[i].getVectorParm()[num] = new Complex(new Rational(Integer.parseInt(firstRat[0]),Integer.parseInt(firstRat[1])),new Rational(Integer.parseInt(secondRat[0]),Integer.parseInt(secondRat[1])));
+                            try {
+                                mat.getArrVector()[i].getVectorParm()[num] = new Complex(new Rational(Integer.parseInt(firstRat[0]),Integer.parseInt(firstRat[1])),new Rational(Integer.parseInt(secondRat[0]),Integer.parseInt(secondRat[1])));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                succeeded = false;
+                            }
                         }
                     }
                     if (field.equals("1")){
                         for(int num=0;num<tempVectorParm.length;num++){
                             String[] split = tempVectorParm[num].split("\\/",2);
-                            mat.getArrVector()[i].getVectorParm()[num] = new Rational(Integer.parseInt(split[0]),Integer.parseInt(split[1]));
+                            try {
+                                mat.getArrVector()[i].getVectorParm()[num] = new Rational(Integer.parseInt(split[0]),Integer.parseInt(split[1]));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                succeeded = false;
+                            }
                         }
                     }
                 }
@@ -147,14 +158,13 @@ public class CommandLineUI implements UI {
      * @param mat The first matrix.
      * @throws Exception
      */
-    private void add(Matrix mat) throws Exception{
-        Scanner console = new Scanner(System.in);
+    private void add(Matrix mat){
         System.out.println("Insert the second matrix size: rows,columns");
-        String matrixSize = console.next();
+        String matrixSize = console.nextLine();
         while(!checkMatrixSize(matrixSize)){
             System.out.println("Input is not good.");
             System.out.println("Insert again the matrix size: rows,columns");
-            matrixSize = console.next();
+            matrixSize = console.nextLine();
         }
         String[] splitSize = matrixSize.split(",",2);
         System.out.println("Insert the second matrix:");
@@ -173,14 +183,13 @@ public class CommandLineUI implements UI {
      * @param mat The first matrix.
      * @throws Exception
      */
-    private void mul(Matrix mat) throws Exception {
-        Scanner console = new Scanner(System.in);
+    private void mul(Matrix mat){
         System.out.println("Insert the second matrix size: rows,columns");
-        String matrixSize = console.next();
+        String matrixSize = console.nextLine();
         while(!checkMatrixSize(matrixSize)){
             System.out.println("Input is not good.");
             System.out.println("Insert again the matrix size: rows,columns");
-            matrixSize = console.next();
+            matrixSize = console.nextLine();
         }
         String[] splitSize = matrixSize.split(",",2);
         System.out.println("Insert the second matrix:");

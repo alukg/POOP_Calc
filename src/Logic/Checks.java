@@ -1,4 +1,4 @@
-package UserInterface;
+package Logic;
 
 /**
  * Class that unites all the the needed checks for the UIs.

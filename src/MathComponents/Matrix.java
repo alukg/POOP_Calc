@@ -1,8 +1,6 @@
 package MathComponents;
-
 /**
  * The class that represents a matrix. 
- *
  */
 public class Matrix
 {
